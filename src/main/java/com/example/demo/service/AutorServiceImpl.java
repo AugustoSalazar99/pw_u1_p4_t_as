@@ -26,13 +26,13 @@ public class AutorServiceImpl implements AutorService{
 	}
 
 	@Override
-	public void eliminar(String id) {
+	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
 		this.autorRepository.eliminar(id);
 	}
 
 	@Override
-	public Autor seleccionar(String id) {
+	public Autor seleccionar(Integer id) {
 		// TODO Auto-generated method stub
 		return this.autorRepository.buscar(id);
 	}

@@ -48,28 +48,44 @@ public class Pa2U2P4AsJaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Hotel hot = new Hotel();
-		hot.setNombre("Hilton colon");
-		hot.setDireccion("av.Patria");
+
+		Autor aut = new Autor();
+		aut.setNombre("Miguel");
+		aut.setApellido("De Cervantes");
 		
-		Habitacion hab = new Habitacion();
-		hab.setNumero("A1");
-		hab.setValor(new BigDecimal(100));
+		Autor aut1 = new Autor();
+		aut1.setNombre("Victor");
+		aut1.setApellido("Hugo");
 		
-		List<Habitacion> listhab=new ArrayList<>();
+		Libro lib=new Libro();
+		lib.setTitulo("La odisea");
+		lib.setEditorial("Pearson");
 		
-		listhab.add(hab);
+		Libro lib1=new Libro();
+		lib1.setTitulo("Pato Lee");
+		lib1.setEditorial("LNS");
 		
-		hot.setHabitaciones(listhab);
-				
-		//this.hotelService.guardar(hot);
-		/*hot.setNombre("Hotel Quito");
-		this.hotelService.actulizar(hot);
+		Set<Libro> libros= new HashSet<>();
+		libros.add(lib);
+		libros.add(lib1);
+		
+		aut.setLibros(libros);
+		aut1.setLibros(libros);
+		
+		Set<Autor> autores=new HashSet<>();
+		autores.add(aut);
+		//autores.add(aut1);
+		
+		
+		lib.setAutores(autores);//aqui por esta cascade en autor
+		lib1.setAutores(autores);
+		  
+		 // this.autorService.guardar(aut);
+		 /* aut.setNombre("Augusto");
+		  this.autorService.actualizar(aut);
 		*/
-		//this.hotelService.eliminar(5);
-		this.hotelService.buscar(6);
-		//System.out.println(this.hotelService.buscar(6));
-		
+	
+		this.autorService.seleccionar(14);
 	}
 
 }

@@ -28,14 +28,14 @@ public class AutorRepositoryImpl implements AutorRepository {
 	}
 
 	@Override
-	public void eliminar(String id) {
+	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
 		Autor aut=this.buscar(id);
 		this.entityManager.remove(aut);
 	}
 
 	@Override
-	public Autor buscar(String id) {
+	public Autor buscar(Integer id) {
 		// TODO Auto-generated method stub
 		return this.entityManager.find(Autor.class, id);
 	}

@@ -5,7 +5,7 @@ import com.example.demo.repository.modelo.Autor;
 public interface AutorService {
 	public void guardar(Autor autor);
 	public void actualizar(Autor autor);
-	public void eliminar(String id);
-	public Autor seleccionar(String id);
+	public void eliminar(Integer id);
+	public Autor seleccionar(Integer id);
 
 }
