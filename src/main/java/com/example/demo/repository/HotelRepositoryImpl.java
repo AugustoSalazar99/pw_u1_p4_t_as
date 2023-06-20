@@ -28,14 +28,14 @@ public class HotelRepositoryImpl implements HotelRepository{
 	}
 
 	@Override
-	public void eliminar(String id) {
+	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
 		Hotel hot= this.buscar(id);
 		this.entityManager.remove(hot);
 	}
 
 	@Override
-	public Hotel buscar(String id) {
+	public Hotel buscar(Integer id) {
 		// TODO Auto-generated method stub
 		return this.entityManager.find(Hotel.class, id);
 	}

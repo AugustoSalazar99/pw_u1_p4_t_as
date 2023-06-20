@@ -25,13 +25,13 @@ public class HotelServiceImpl implements HotelService {
 	}
 
 	@Override
-	public void eliminar(String id) {
+	public void eliminar(Integer id) {
 		// TODO Auto-generated method stub
 		this.hotelRepository.eliminar(id);
 	}
 
 	@Override
-	public Hotel buscar(String id) {
+	public Hotel buscar(Integer id) {
 		// TODO Auto-generated method stub
 		return this.hotelRepository.buscar(id);
 	}

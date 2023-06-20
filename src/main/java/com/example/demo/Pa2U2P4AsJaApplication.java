@@ -48,29 +48,28 @@ public class Pa2U2P4AsJaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Ciudadano ciu = new Ciudadano();
-
-		ciu.setNombre("Jairo");
-		ciu.setApellido("Salazar");
-		ciu.setCedula("12431243");
-
-		Empleado empl = new Empleado();
-
-		empl.setCuidadano(ciu);
-		empl.setCargo("jefe");
-		empl.setSueldo(new BigDecimal(1000));
-		ciu.setEmpleado(empl);
-		/// no se hace this.empleadoService.guardar(empl);
-
-		//this.ciudadanoService.guardar(ciu);
-	/*	ciu.setNombre("Yajairo");
-		ciu.setCedula("9823651234");
-		this.ciudadanoService.actualizar(ciu);
-	*/
-		//this.ciudadanoService.borrar(3);
+		Hotel hot = new Hotel();
+		hot.setNombre("Hilton colon");
+		hot.setDireccion("av.Patria");
 		
+		Habitacion hab = new Habitacion();
+		hab.setNumero("A1");
+		hab.setValor(new BigDecimal(100));
 		
-System.out.println(this.ciudadanoService.buscar(5));
+		List<Habitacion> listhab=new ArrayList<>();
+		
+		listhab.add(hab);
+		
+		hot.setHabitaciones(listhab);
+				
+		//this.hotelService.guardar(hot);
+		/*hot.setNombre("Hotel Quito");
+		this.hotelService.actulizar(hot);
+		*/
+		//this.hotelService.eliminar(5);
+		this.hotelService.buscar(6);
+		//System.out.println(this.hotelService.buscar(6));
+		
 	}
 
 }
