@@ -10,5 +10,7 @@ public interface IUniversidadService {
 	public Universidad reporte(Integer id);
 
 	public Universidad reporteDinamico(String nombre,Double pension);
+	public int eliminarPorNombre(String nombre);
+
 
 }

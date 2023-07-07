@@ -42,4 +42,10 @@ public class UniversidadServiceImpl implements IUniversidadService {
 		// TODO Auto-generated method stub
 		return this.universidadRepository.seleccionarDinamico(nombre, pension);
 	}
+
+	@Override
+	public int eliminarPorNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return this.universidadRepository.eliminarPorNombre(nombre);
+	}
 }

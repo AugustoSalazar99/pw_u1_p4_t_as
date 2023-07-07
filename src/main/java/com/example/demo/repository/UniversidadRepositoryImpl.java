@@ -7,6 +7,7 @@ import com.example.demo.repository.modelo.Universidad;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -67,6 +68,23 @@ public class UniversidadRepositoryImpl implements IUniversidadRepository {
 				myQuery.select(miTabla).where(predicadoFinal);
 				TypedQuery<Universidad> myQueryFinal = this.entityManager.createQuery(myQuery);
 		return myQueryFinal.getSingleResult();
+	}
+
+	@Override
+	public int eliminarPorNombre(String nombre) {
+		// TODO Auto-generated method stub
+
+		Query myQuery=this.entityManager.createQuery("DELETE FROM Universidad u WHERE u.nombre=:datoNombre");
+		myQuery.setParameter("datoNombre", nombre);
+	
+		
+		return myQuery.executeUpdate();
+	}
+
+	@Override
+	public int actualizarPorApellido(String nombre, Double pension) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

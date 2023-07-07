@@ -13,6 +13,10 @@ public interface IUniversidadRepository {
 	
 	public Universidad seleccionarDinamico(String nombre,Double pension);
 	
+	public int eliminarPorNombre(String nombre);
+	
+	public int actualizarPorApellido(String nombre,Double pension);
+	
 	
 	
 	

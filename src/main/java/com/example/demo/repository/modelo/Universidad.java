@@ -8,12 +8,22 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
 @Table
+
+@NamedQueries({
+	@NamedQuery(name = "Unversidad.buscaPorPension", query = "SELECT u FROM Universidad u WHERE u.pension= :datoPension"),
+	@NamedQuery(name = "Universidad.buscaPorNombre", query = "SELECT u FROM Universidad u  WHERE u.nombre= :datoNombre")
+
+})
+
+
 public class Universidad {
 
 	
@@ -35,6 +45,9 @@ public class Universidad {
 	//relacion
 	@OneToMany(mappedBy = "universidad",cascade = CascadeType.ALL)
 	private List<Estudiante> Estudiantes;
+	
+	@OneToMany(mappedBy = "universidad",cascade = CascadeType.ALL)
+	private List<Empleado> empleados;
 
 	public Integer getId() {
 		return id;
@@ -84,13 +97,20 @@ public class Universidad {
 		Estudiantes = estudiantes;
 	}
 
+	public List<Empleado> getEmpleados() {
+		return empleados;
+	}
+
+	public void setEmpleados(List<Empleado> empleados) {
+		this.empleados = empleados;
+	}
+
 	@Override
 	public String toString() {
 		return "Universidad [id=" + id + ", nombre=" + nombre + ", ubicación=" + ubicación + ", fundación=" + fundación
-				+ ", pension=" + pension + ", Estudiantes=" + Estudiantes + "]";
+				+ ", pension=" + pension + ", Estudiantes=" + Estudiantes + ", empleados=" + empleados + "]";
 	}
 
-	
 	
 	
 	

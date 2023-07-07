@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +10,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.example.demo.repository.IEmpleadoRepository;
+import com.example.demo.repository.modelo.Empleado;
 import com.example.demo.repository.modelo.Estudiante;
 import com.example.demo.repository.modelo.Universidad;
+import com.example.demo.service.IEmpleadoService;
 import com.example.demo.service.IEstudianteService;
 import com.example.demo.service.IUniversidadService;
 
@@ -22,6 +26,8 @@ public class Pa2P4AsTApplication implements CommandLineRunner {
 	private IEstudianteService estudianteService;
 	@Autowired
 	private IUniversidadService universidadService;
+	@Autowired
+	private IEmpleadoService empleadoService;
 	
 	
 	public static void main(String[] args) {
@@ -42,6 +48,11 @@ public class Pa2P4AsTApplication implements CommandLineRunner {
 		es.setEdad("22");
 		es.setEspecialidad("filosofia");
 		es.setFechaIngreso(LocalDateTime.now());
+		
+		Empleado em= new Empleado();
+		em.setCargo("limpieza");
+		em.setSueldo(new BigDecimal(100));
+	
 	
 		
 		//this.estudianteService.guardar(es);
@@ -53,7 +64,7 @@ public class Pa2P4AsTApplication implements CommandLineRunner {
 		uni.setFundación("leon mera");
 		uni.setPension(200.00);
 		*/
-		uni.setNombre("puce");
+		uni.setNombre("espoch");
 		uni.setUbicación("universitaria");
 		uni.setFundación("juan mera");
 		uni.setPension(200.00);
@@ -62,21 +73,32 @@ public class Pa2P4AsTApplication implements CommandLineRunner {
 		
 		List<Estudiante> listEs= new ArrayList<>();
 		listEs.add(es);
-		
+		List<Empleado> listEmp= new ArrayList<>();
+		listEmp.add(em);
 		
 		//rela
+		/*
 		es.setUniversidad(uni);
+		em.setUniversidad(uni);
 		uni.setEstudiantes(listEs);
 		
 		
-		//this.universidadService.guardar(uni);
+		this.universidadService.guardar(uni);
+		*/
 		
+		//this.empleadoService.guardar(em);
+	/*	
 	Universidad un=this.universidadService.reporteDinamico("uce",200.00 );
 	System.out.println("Nombre de la Universidad: "+un.getNombre()+ " Pension: "+un.getPension());
-
+*/
+		
+		//this.universidadService.eliminarPorNombre("uce");
 		
 		
-	
+	//this.empleadoService.eliminarPorId(1);
+	//System.out.println(this.empleadoService.eliminarPorId(1));
+		
+		System.out.println(this.empleadoService.reporteActualizarPorSueldo("Profesor", new BigDecimal(500)));
 	}
 
 }
