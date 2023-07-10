@@ -5,6 +5,7 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -14,8 +15,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
-@Entity
-@Table
+
 
 @NamedQueries({
 	@NamedQuery(name = "Unversidad.buscaPorPension", query = "SELECT u FROM Universidad u WHERE u.pension= :datoPension"),
@@ -23,7 +23,8 @@ import jakarta.persistence.Table;
 
 })
 
-
+@Entity
+@Table
 public class Universidad {
 
 	
@@ -43,12 +44,13 @@ public class Universidad {
 	private Double pension;
 	
 	//relacion
-	@OneToMany(mappedBy = "universidad",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "universidad",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Estudiante> Estudiantes;
 	
-	@OneToMany(mappedBy = "universidad",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "universidad",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Empleado> empleados;
 
+	//set y get 
 	public Integer getId() {
 		return id;
 	}

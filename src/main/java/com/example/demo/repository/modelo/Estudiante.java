@@ -37,6 +37,7 @@ public class Estudiante {
 	@JoinColumn(name="universidad_id")
 	private Universidad universidad;
 
+	//set y get
 	@Override
 	public String toString() {
 		return "Estudiante [id=" + id + ", nombre=" + nombre + ", edad=" + edad + ", especialidad=" + especialidad

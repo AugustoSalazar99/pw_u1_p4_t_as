@@ -1,6 +1,7 @@
 package com.example.demo.repository;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,6 +12,7 @@ import com.example.demo.repository.modelo.Empleado;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 
 @Repository
 @Transactional
@@ -63,6 +65,18 @@ public class EmpleadoRepositoryImpl implements IEmpleadoRepository{
 		myQuery.setParameter("datoSueldo", sueldo);
 
 		return myQuery.executeUpdate();
+	}
+
+	@Override
+	public List<Empleado> obtenerPorCargo(String cargo) {
+		// TODO Auto-generated method stub
+		TypedQuery<Empleado> myQuery=this.entityManager.createQuery(
+				"SELECT  e FROM Empleado e WHERE e.cargo=: datoCargo"
+				,Empleado.class);
+		myQuery.setParameter("datoCargo", cargo);
+		
+		
+		return myQuery.getResultList();
 	}
 
 }

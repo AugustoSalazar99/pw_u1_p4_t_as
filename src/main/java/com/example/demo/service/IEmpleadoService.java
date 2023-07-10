@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import com.example.demo.repository.modelo.Empleado;
 
@@ -15,4 +16,9 @@ public interface IEmpleadoService {
 	public int eliminarPorId(Integer id);
 	public int reporteActualizarPorSueldo(String cargo, BigDecimal sueldo);
 
+	
+	public List<Empleado> reportePorCargo(String cargo);
+
+	
+	
 }

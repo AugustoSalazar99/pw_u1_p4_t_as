@@ -44,13 +44,13 @@ public class Pa2P4AsTApplication implements CommandLineRunner {
 		///TAREA
 		
 		Estudiante es=new Estudiante();
-		es.setNombre("Pedro");
-		es.setEdad("22");
-		es.setEspecialidad("filosofia");
+		es.setNombre("Maria");
+		es.setEdad("23");
+		es.setEspecialidad("Mecatronica");
 		es.setFechaIngreso(LocalDateTime.now());
 		
 		Empleado em= new Empleado();
-		em.setCargo("limpieza");
+		em.setCargo("Inspector");
 		em.setSueldo(new BigDecimal(100));
 	
 	
@@ -64,10 +64,10 @@ public class Pa2P4AsTApplication implements CommandLineRunner {
 		uni.setFundación("leon mera");
 		uni.setPension(200.00);
 		*/
-		uni.setNombre("espoch");
+		uni.setNombre("ESPE");
 		uni.setUbicación("universitaria");
 		uni.setFundación("juan mera");
-		uni.setPension(200.00);
+		uni.setPension(400.00);
 		
 		//
 		
@@ -77,14 +77,14 @@ public class Pa2P4AsTApplication implements CommandLineRunner {
 		listEmp.add(em);
 		
 		//rela
-		/*
+		
 		es.setUniversidad(uni);
 		em.setUniversidad(uni);
 		uni.setEstudiantes(listEs);
+		uni.setEmpleados(listEmp);
 		
+		//this.universidadService.guardar(uni);
 		
-		this.universidadService.guardar(uni);
-		*/
 		
 		//this.empleadoService.guardar(em);
 	/*	
@@ -98,7 +98,13 @@ public class Pa2P4AsTApplication implements CommandLineRunner {
 	//this.empleadoService.eliminarPorId(1);
 	//System.out.println(this.empleadoService.eliminarPorId(1));
 		
-		System.out.println(this.empleadoService.reporteActualizarPorSueldo("Profesor", new BigDecimal(500)));
+		//System.out.println(this.empleadoService.reporteActualizarPorSueldo("Profesor", new BigDecimal(500)));
+		
+		List<Empleado> reporteEmpl=this.empleadoService.reportePorCargo("Ayudante"); 
+		
+		for (Empleado empleado : reporteEmpl) {
+			System.out.println(empleado.getCargo());
+		}
 	}
 
 }
