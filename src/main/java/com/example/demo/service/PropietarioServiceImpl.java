@@ -7,15 +7,17 @@ import com.example.demo.repository.IPropietarioRepository;
 import com.example.demo.repository.modelo.Propietario;
 
 @Service
-public class PropietarioServiceImpl implements IPropietarioRepository{
+public class PropietarioServiceImpl implements IPropietarioService{
 
 	@Autowired
 	private IPropietarioRepository propietarioRepository;
 
 	@Override
-	public void insertar(Propietario propietario) {
+	public void guardar(Propietario propietario) {
 		// TODO Auto-generated method stub
 		this.propietarioRepository.insertar(propietario);
 	}
+
+	
 	
 }

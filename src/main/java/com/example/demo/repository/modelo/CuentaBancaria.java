@@ -39,6 +39,7 @@ public class CuentaBancaria {
 	
 	@OneToMany(mappedBy = "ctaDestino",cascade = CascadeType.ALL)
 	private List<Transferencia> transferenciaDestino;
+	
 
 	
 	@ManyToOne

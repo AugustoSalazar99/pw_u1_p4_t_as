@@ -1,6 +1,5 @@
 package com.example.demo.repository;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.repository.modelo.Propietario;

@@ -13,7 +13,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.example.demo.repository.modelo.CuentaBancaria;
 import com.example.demo.repository.modelo.Propietario;
 import com.example.demo.repository.modelo.Transferencia;
+import com.example.demo.service.ICuentaBancariaService;
 import com.example.demo.service.IPropietarioService;
+import com.example.demo.service.ITransferenciaService;
 
 @SpringBootApplication
 public class Pa2P2U3AsTareaApplication implements CommandLineRunner {
@@ -21,6 +23,10 @@ public class Pa2P2U3AsTareaApplication implements CommandLineRunner {
 	@Autowired
 	private IPropietarioService propietarioService;
 	
+	@Autowired
+	private ITransferenciaService transferenciaService;
+	@Autowired
+	private ICuentaBancariaService cuentaBancariaService;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(Pa2P2U3AsTareaApplication.class, args);
@@ -40,48 +46,62 @@ public class Pa2P2U3AsTareaApplication implements CommandLineRunner {
 		p1.setApellido("Oña");
 		p1.setCedula("2147568423");
 		
+		Propietario p2 = new Propietario();
+		p2.setNombre("Luis");
+		p2.setApellido("Oña");
+		p2.setCedula("1732125423");
+		
 		CuentaBancaria cta=new CuentaBancaria();
 		cta.setNumero("22233344");
-		cta.setSaldo(new BigDecimal(500));
+		cta.setSaldo(new BigDecimal(300));
 		cta.setTipo("A");
-		//p.getCuentaBancaria().add(cta);
+		
 		
 		CuentaBancaria cta1=new CuentaBancaria();
 		cta1.setNumero("22255544");
 		cta1.setSaldo(new BigDecimal(500));
 		cta1.setTipo("C");
-		//p1.getCuentaBancaria().add(cta1);
 		
-		Transferencia t = new Transferencia();
-		t.setMonton(new BigDecimal(50));
-		t.setFecha(LocalDateTime.now());
-		t.setCtaOrigen(cta);
-		t.setCtaDestino(cta1);
+		CuentaBancaria cta2=new CuentaBancaria();
+		cta2.setNumero("22233355");
+		cta2.setSaldo(new BigDecimal(800));
+		cta2.setTipo("C");
 		
+
 		//
 		List<CuentaBancaria> listCtaA= new ArrayList<>();
 		List<CuentaBancaria> listCtaC= new ArrayList<>();
 		listCtaA.add(cta);
-		listCtaC.add(cta1);
-		
-		List<Transferencia> listTA=new ArrayList<>();
-		listTA.addAll(cta);
+		listCtaC.add(cta2);
 		
 		
-		p.setCuentaBancaria(listCtaA);
-		cta.setTransferenciaOrigen(l);
-		t.setCtaOrigen(cta1);
 		
-		//p1.setCuentaBancaria(listCtaC);
-		//t.setCtaOrigen(cta);
-		//t.setCtaDestino(cta1);
 		
-		this.propietarioService.guardar(p);
+		cta2.setPropietario(p2);
+		p2.setCuentaBancaria(listCtaC);
+		
+		//this.propietarioService.guardar(p);
+		//this.propietarioService.guardar(p1);
+		//this.propietarioService.guardar(p2);
 	
 		
 		
 	
+	
+		//this.transferenciaService.guardarTransferencia(8, 9, new BigDecimal(100));
+	
 		
+		List<Transferencia> transferencia =this.transferenciaService.reporteCta();
+
+		for (Transferencia t :transferencia) {
+			System.out.println(
+					"Transferencia ID: "+t.getId()
+					+" Monton:"+t.getMonton()
+					+" Fecha: "+t.getFecha()	);
+			
+		}
+	
+	
 	}
 
 }
