@@ -2,9 +2,13 @@ package com.example.demo.repository;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.example.demo.funcional.Main;
 import com.example.demo.repository.modelo.CuentaBancaria;
 
 import jakarta.persistence.EntityManager;
@@ -14,6 +18,8 @@ import jakarta.persistence.TypedQuery;
 @Repository
 @Transactional
 public class CuentaBancariaRepositoryImpl implements ICuentaBancariaRepository {
+
+	private static final Logger LOG = LoggerFactory.getLogger(CuentaBancariaRepositoryImpl.class);
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -47,7 +53,9 @@ public class CuentaBancariaRepositoryImpl implements ICuentaBancariaRepository {
 
 	@Override
 	public void insertar(CuentaBancaria cta) {
+		LOG.info("Hilo Repository:  "+Thread.currentThread().getName());
 		this.entityManager.persist(cta);
+		
 		
 	}
 	
